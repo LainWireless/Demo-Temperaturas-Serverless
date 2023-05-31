@@ -1,0 +1,24 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: temperaturas-backend
+  labels:
+    app: temperaturas
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    app: temperaturas
+    tier: backend
+  template:
+    metadata:
+      labels:
+        app: temperaturas
+        tier: backend
+    spec:
+      containers:
+        - name: contendor-servidor-temperaturas
+          image: iesgn/temperaturas_backend
+          ports:
+            - name: api-server
+              containerPort: 5000
